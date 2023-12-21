@@ -31,6 +31,7 @@ class RegistrationExport implements FromCollection, WithHeadings
             'mdm_competitor',
             'poc_date',
             'budget_license',
+            'created_at',
         )->get();
 
         $data = $registrations->map(function ($registration) {
@@ -47,9 +48,10 @@ class RegistrationExport implements FromCollection, WithHeadings
                 'Deployment Type' => $registration->deployment,
                 'OS type' => $registration->os_tipe,
                 'Number of licenses' => $registration->jumlah_lisensi,
-                'Current Exisiting MDM / Competitor' => $registration->mdm_competitor,
+                'Current Exisiting MDM / Competitor (if Any)' => $registration->mdm_competitor,
                 'Demo / POC Date (Target)' => $registration->poc_date,
-                'End User Budget Per License (in IDR)' => 'Rp. ' . $registration->budget_license . '.00',
+                'End User Budget Per License per Year(in IDR)' => 'Rp. ' . $registration->budget_license,
+                'Registration Date' => $registration->created_at->format('d-m-Y H:i:s'),
             ];
         });
 
@@ -71,9 +73,10 @@ class RegistrationExport implements FromCollection, WithHeadings
             'Deployment Type',
             'OS type',
             'Number of licenses',
-            'Current Exisiting MDM / Competitor',
+            'Current Exisiting MDM / Competitor (if Any)',
             'Demo / POC Date (Target)',
-            'End User Budget Per License (in IDR)',
+            'End User Budget Per License per Year(in IDR)',
+            'Registration Date',
         ];
     }
 }

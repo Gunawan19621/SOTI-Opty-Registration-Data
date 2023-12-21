@@ -98,7 +98,6 @@
                             <td>{{ $data_pendaftaran->jumlah_lisensi }}</td>
                             <td>{{ $data_pendaftaran->mdm_competitor }}</td>
                             <td>{{ \Carbon\Carbon::parse($data_pendaftaran->poc_date)->format('d-m-Y') }}</td>
-                            {{-- <td>Rp. {{ $data_pendaftaran->budget_license }}.00</td> --}}
                             <td>
                                 @if ($data_pendaftaran->budget_license)
                                     Rp. {{ $data_pendaftaran->budget_license }}

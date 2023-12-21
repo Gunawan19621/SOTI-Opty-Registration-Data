@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('company_industry');
             $table->string('deployment');
             $table->string('os_tipe');
-            $table->integer('jumlah_lisensi');
+            $table->string('jumlah_lisensi');
             $table->string('mdm_competitor');
             $table->date('poc_date');
             $table->string('budget_license');

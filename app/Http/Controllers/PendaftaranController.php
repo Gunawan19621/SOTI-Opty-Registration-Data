@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\RegistrationExport;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use App\Exports\RegistrationExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PendaftaranController extends Controller
 {
-    // dalam file PendaftaranController.php
     public function index()
     {
+        // Check if the user is accessing the protected URL
+        if (session('accessing_protected_url')) {
+            // Logout the user
+            Auth::logout();
+
+            // Clear the session key
+            session()->forget('accessing_protected_url');
+        }
+
         $data = [
             'pendaftaran' => Pendaftaran::get(),
         ];
+
         return view('formulir_pendaftaran_soti_opty.index', $data);
     }
 

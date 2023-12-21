@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -217,7 +217,7 @@
                             <div class="form-group mb-3">
                                 <label for="jumlah_lisensi" style="font-weight: bold;">Number of licenses : <span
                                         class="text-danger">*</span></label>
-                                <input type="number" name="jumlah_lisensi" class="form-control"
+                                <input type="text" name="jumlah_lisensi" class="form-control"
                                     placeholder="Enter the Number of licenses" required>
                             </div>
                             <div class="form-group mb-3">

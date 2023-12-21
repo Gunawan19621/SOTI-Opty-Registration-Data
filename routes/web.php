@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PendaftaranController;
 
 /*
@@ -14,11 +15,17 @@ use App\Http\Controllers\PendaftaranController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('formulir_pendaftaran_soti_opty.index');
+// Route::get('/login', function () {
+//     return view('login');
 // });
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/data-pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+Route::middleware(['auth', 'auth.check'])->group(function () {
+    Route::get('/data-pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+});
+
+// Route::get('/data-pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
 Route::get('/data-pendaftaran/export', [PendaftaranController::class, 'export'])->name('pendaftaran.export');
 Route::get('/', [PendaftaranController::class, 'create'])->name('pendaftaran.create');
 Route::post('/pendaftaran', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
